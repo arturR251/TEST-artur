@@ -1,0 +1,4 @@
+inci = int(input('Care este distanta in inci ?'))#introducem datele
+cm = inci*2.54 #formula 
+print(inci,'inci este ',cm)
+#finisarea

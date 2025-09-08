@@ -1,0 +1,25 @@
+#variabile
+#introducerea datelor
+nume = input('Stimate:')
+numb = float(input('Numerele introduse de: dvs. sunt... '))
+numb2 =float(input())
+numb = int(numb)
+numb2= int(numb2)
+
+print('Mai jos sunt rezultatele operatiilor de baza cu aceste numere: ')
+suma = numb + numb2 #suma dintre 2 numeri
+print('suma:',suma) 
+difer = numb - numb2 #diferenta dintre 2 numeri
+print('diferenta:',difer)
+produs = numb*numb2  #produs dintre 2 numeri
+print('produs:',produs)
+impartire = numb/numb2 #impartire dintre 2 numere
+impartire = float(impartire) 
+print('impartire:',impartire)
+impr_intreaga = numb//numb2 #intraga impartire
+print('impartirea intreaga:',impr_intreaga)
+rest = numb%numb2 #restu impartire
+print('rest:',rest)
+putere = (numb+numb2)**2 #puterea x^2
+print('putere:',putere)
+#finisarea programului

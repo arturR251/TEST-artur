@@ -1,0 +1,601 @@
+//Ex:1
+//------------------------------------------------------------------------------------------//5 exercitii
+/*
+#include<stdio.h>
+//suma divizorilor 1+2+3=6
+int main() {
+    int n;
+    printf("Introdu n:");
+    scanf("%d",&n);
+    for (int i=1; i<n; i++) {
+        if (n%i==0){
+            printf("%d ",i);
+        }else {
+            continue;
+        }
+    }
+    return 0;
+}
+//-------------------------------------------corectat
+#include <stdio.h>
+int main() {
+    int n, suma = 0;
+    printf("Introdu n: ");
+    scanf("%d", &n);
+    printf("Divizorii lui %d sunt: ", n);
+    for (int i = 1; i < n; i++) {
+        if (n % i == 0) {
+            printf("%d ", i);
+            suma += i;   // adunăm divizorul la sumă
+        }
+    }
+    printf("\nSuma divizorilor este: %d\n", suma);
+    return 0;
+}
+*/
+//Ex:2
+/*
+#include <stdio.h>
+//inversul 4321----->1 2 3 4
+int main() {
+    int n, rest;
+    printf("Introduceti N: ");
+    scanf("%d", &n);
+    while (n != 0) {
+        rest = n % 10;
+        printf("%d ", rest);
+        n = n / 10;
+    }
+    return 0;
+}
+*/
+//Ex:3
+/*
+#include <stdio.h>
+#include <math.h>
+int main() {
+    int n;
+    int estePrim = 1;
+    printf("Introduceti un numar intreg pozitiv: ");
+    if (scanf("%d", &n) != 1) {
+        printf("Eroare la citire. Va rugam introduceti un numar valid.\n");
+        return 1;
+    }
+    if (n <= 1) {
+        estePrim = 0;
+    }
+    else if (n == 2) {
+        estePrim = 1;
+    }
+    else {
+        if (n % 2 == 0) {
+            estePrim = 0;
+        } else {
+            int limita = (int)sqrt(n);
+            for (int i = 3; i <= limita; i += 2) {
+                if (n % i == 0) {
+                    estePrim = 0;
+                    break;
+                }
+            }
+        }
+    }
+    printf("\n--- Rezultat ---\n");
+    if (estePrim) {
+        printf("Numarul %d ESTE un numar prim.\n", n);
+    } else {
+        printf("Numarul %d NU ESTE un numar prim.\n", n);
+    }
+    return 0;
+}
+*/
+//Ex:4
+/*
+#include<stdio.h>
+int main() {
+    int n,cat,sum=0,origin;
+    printf("Introduceti un numar:");
+    scanf("%d",&n);
+    origin = n;
+    while (n !=0 ) {
+        cat = n % 10;
+        if (cat % 2!=0) {
+            sum += cat;
+        }
+        n = n/10;
+    }
+    printf("Suma la cifre impare din numarul %d este: %d",origin,sum);
+    return 0;
+}
+*/
+//Ex:5
+/*
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    printf("Introduceti un numar simplu a: ");
+    scanf("%d", &a);
+    printf("Introduceti puterea b: ");
+    scanf("%d", &b);
+    int rezultat = 1;
+    int a1 = a, b1 = b;
+    for (int i = 1; i <= b; i++) {
+        rezultat *= a1;
+    }
+    printf("%d^%d este egal cu %d\n", a1, b1, rezultat);
+    return 0;
+}
+*/
+//------------------------------------------------------------------------------------------//pag 22 ex 5-9 (5 ex)
+//-------------------------------------------ex:5 a),b),c),d),e),f)
+/*
+#include <stdio.h>
+
+int main() {
+    int max, min, suma;
+    int array[2];
+
+    printf("Introduceti 2 elementele din tablou: ");
+    for (int i = 0; i < 2; i++) {
+        scanf("%d", &array[i]);
+    }
+    max = array[0];
+    min = array[0];
+    for (int i = 1; i < 2; i++) {
+        if (array[i] > max) {
+            max = array[i];
+        } else if (array[i] < min) {
+            min = array[i];
+        }
+    }
+    printf("Maximul din tablou este: %d\n", max);
+    printf("Minim din tablou este: %d\n", min);
+    suma = max + min;
+    printf("Suma dintre max si min este: %d\n", suma);
+
+    int ex = array[0] - array[1];
+
+    int array2[2] = {ex, array[1]};
+
+    int max1 = array2[0], min1 = array2[0];
+    for (int i = 1; i < 2; i++) {
+        if (array2[i] > max1) {
+            max1 = array2[i];
+        }
+    }
+    printf("Cel mai maxim element din array2[] este: %d\n", max1);
+
+    ex = array[0] + array[1];
+
+    for (int i = 1; i < 2; i++) {
+        if (array2[i] < min1) {
+            min1 = array2[i];
+        }
+    }
+    printf("Cel mai minim element din array2[] este: %d\n", min1);
+
+    ex = 2 * ex;
+    array2[1] = 3 * array2[1];
+
+    int max2 = array2[0];
+    for (int i = 1; i < 2; i++) {
+        if (array2[i] > max2) {
+            max2 = array2[i];
+        }
+    }
+    printf("Cel mai maxim element din array2[] din expresia max(2a,3b) este: %d\n", max2);
+    return 0;
+}
+*/
+//-------------VARIANTA CORECTATA-------------//
+/*
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    printf("Introduceti 2 numere: ");
+    scanf("%d %d", &a, &b);
+    // max și min
+    int max = (a > b) ? a : b;
+    int min = (a < b) ? a : b;
+    int suma = max + min;
+
+    printf("Maximul: %d\n", max);
+    printf("Minimul: %d\n", min);
+    printf("Suma max + min: %d\n", suma);
+
+    // array2 cu elemente bazate pe expresii
+    int array2[2];
+    array2[0] = a - b;
+    array2[1] = b;
+
+    int max1 = (array2[0] > array2[1]) ? array2[0] : array2[1];
+    int min1 = (array2[0] < array2[1]) ? array2[0] : array2[1];
+
+    printf("Max array2: %d\n", max1);
+    printf("Min array2: %d\n", min1);
+
+    // expresia max(2a, 3b)
+    int max2 = (2 * a > 3 * b) ? 2 * a : 3 * b;
+    printf("Cel mai mare dintre 2a si 3b este: %d\n", max2);
+
+    return 0;
+}
+*/
+//-------------------------------------------ex:6 a),b),c),d),e),f)
+/*
+#include <stdio.h>
+#include <math.h>
+
+double max_of_three(double x, double y, double z) {
+    return fmax(x, fmax(y, z));
+}
+
+double min_of_three(double x, double y, double z) {
+    return fmin(x, fmin(y, z));
+}
+
+int main() {
+    double a, b, c;
+
+    if (scanf("%lf %lf %lf", &a, &b, &c) != 3) {
+        return 1;
+    }
+
+    double result_a = max_of_three(a, b, c);
+    printf("a) %lf\n", result_a);
+
+    double result_b = min_of_three(a, b, c);
+    printf("b) %lf\n", result_b);
+
+    double result_c;
+    if (result_b == 0.0) {
+        result_c = NAN;
+        printf("c) NaN (Division by zero)\n");
+    } else {
+        result_c = result_a / result_b;
+        printf("c) %lf\n", result_c);
+    }
+
+    double result_d = 3.0 * result_a;
+    printf("d) %lf\n", result_d);
+
+    double expression_e_third = a + b - c;
+    double max_e = max_of_three(a, b, expression_e_third);
+    double result_e = 4.0 - 2.0 * max_e;
+    printf("e) %lf\n", result_e);
+
+    double arg1_f = a - b;
+    double arg2_f = b - c;
+    double arg3_f = a - c;
+
+    double max_f = max_of_three(arg1_f, arg2_f, arg3_f);
+
+    double result_f = max_f * max_f - 1.0;
+    printf("f) %lf\n", result_f);
+
+    return 0;
+}
+*/
+//-------------------------------------------ex:7 a),b),c),d)
+/*
+#include<stdio.h>
+
+int main() {
+    float a,r,b;
+    printf("introduceti valorile lui A si B: ");
+    scanf("%f",&a);
+    scanf("%f",&b);
+    if (a>b) {
+        printf("%.4f este mai mare\n",a);
+    }else{
+        printf("%.4f este mai mare\n",b);
+        printf("Daca (b-a)>(a-b) atunci afiseze: b in caz contrar (a-b)\n");
+        if (b-a>a-b) {
+            printf("b: %.4f",b);
+        }else {
+            r = a-b;
+            printf("(a-b): %.4f\n",r);
+        }
+    }
+    if (a=b) {
+        r=0;
+        r=a+b;
+        printf("   (a+b): %.4f\n",r);
+    }else {
+        r=0;
+        r = b-a;
+        printf("(b-a): %.4f\n",r);
+    }
+    if (a != b) {
+        printf("%.4f and %.4f\n",a,b);
+    }else {
+        printf("a: %.4f\n",a);
+    }
+    return 0;
+}
+*/
+//-------------------------------------------ex:8 a),b),c),d)
+/*
+#include <stdio.h>
+#include <math.h>
+
+// Definim constanta Pi pentru functiile trigonometrice
+#define PI 3.14159265358979323846
+
+// Functie pentru calculul cazului a)
+double calculate_a(double x) {
+    if (x < -5) {
+        return x * x; // x^2
+    } else if (x >= -5 && x < 2) {
+        return x + 1; // x + 1
+    } else { // x >= 2
+        return x * x * x; // x^3
+    }
+}
+// Functie pentru calculul cazului b)
+double calculate_b(double x) {
+    if (x < 0) {
+        return cos(x); // cos(x)
+    } else if (x == 0) {
+        return 4.0; // 4
+    } else { // x > 0
+        return sin(x); // sin(x)
+    }
+}
+// Functie pentru calculul cazului c)
+double calculate_c(double x) {
+    if (x < 1) {
+        // |x - 1| = -(x - 1) = 1 - x, deoarece x < 1
+        return 3 * x + (1 - x); // 3x + |x - 1|
+    } else if (x >= 1 && x < 6) {
+        return 2.0; // 2
+    } else { // x >= 6
+        // log baza 3 din x. Folosim log(x) / log(3)
+        return log(x) / log(3.0); // log_3 x
+    }
+}
+// Functie pentru calculul cazului d)
+double calculate_d(double x) {
+    if (x <= 0) {
+        return 1.0; // 1
+    } else if (x > 0 && x <= 2) {
+        return x * x + x; // x^2 + x
+    } else { // x > 2
+        // sin(pi * x)
+        return sin(PI * x); // sin(πx)
+    }
+}
+int main() {
+    char choice;
+    double x, result;
+
+    printf("Alegeti functia pe care doriti sa o evaluati (a, b, c, d): ");
+    scanf(" %c", &choice); // Spatiul inainte de %c ignora spatiile/enter-urile precedente
+
+    printf("Introduceti valoarea lui x: ");
+    if (scanf("%lf", &x) != 1) {
+        printf("Eroare la citirea valorii lui x.\n");
+        return 1;
+    }
+    switch (choice) {
+        case 'a':
+        case 'A':
+            result = calculate_a(x);
+            printf("f(x) = x^2, x+1, x^3\n");
+            printf("Valoarea functiei f(%.2lf) = %.4lf\n", x, result);
+            break;
+
+        case 'b':
+        case 'B':
+            result = calculate_b(x);
+            printf("f(x) = cos x, 4, sin x\n");
+            printf("Valoarea functiei f(%.2lf) = %.4lf\n", x, result);
+            break;
+
+        case 'c':
+        case 'C':
+            result = calculate_c(x);
+            printf("f(x) = 3x+|x-1|, 2, log_3 x\n");
+            printf("Valoarea functiei f(%.2lf) = %.4lf\n", x, result);
+            break;
+
+        case 'd':
+        case 'D':
+            result = calculate_d(x);
+            printf("f(x) = 1, x^2+x, sin(pi*x)\n");
+            printf("Valoarea functiei f(%.2lf) = %.4lf\n", x, result);
+            break;
+
+        default:
+            printf("Alegere invalida. Va rugam alegeti a, b, c sau d.\n");
+            return 1;
+    }
+    return 0;
+}
+*/
+//-------------------------------------------ex:9
+#include <stdio.h>
+#include <stdlib.h> // Necesara pentru functia abs()
+
+int main() {
+    int m, n;
+    // 1. Citirea datelor
+    printf("Introduceti primul numar intreg (m): ");
+    // Folosim %d pentru citirea unui intreg
+    if (scanf("%d", &m) != 1) {
+        printf("Eroare la citirea lui m.\n");
+        return 1;
+    }
+    printf("Introduceti al doilea numar intreg (n): ");
+    if (scanf("%d", &n) != 1) {
+        printf("Eroare la citirea lui n.\n");
+        return 1;
+    }
+    // 2. Verificarea conditiei
+    // Doua numere sunt consecutive daca diferenta lor absoluta este 1.
+    // Functia abs() returneaza valoarea absoluta a unui intreg.
+    if (abs(m - n) == 1) {
+        // 3. Afisarea rezultatului (consecutive)
+        printf("\nNumerele %d si %d SUNT consecutive.\n", m, n);
+    } else {
+        // 3. Afisarea rezultatului (NU sunt consecutive)
+        printf("\nNumerele %d si %d NU SUNT consecutive.\n", m, n);
+    }
+    return 0;
+}
+
+
+
+//______________________________________________________________________end.
+
+//====================================================================================pag 35-36
+//--------------------------------------------------------------------------10
+/*
+#include <stdio.h>
+
+int main() {
+    int n;
+    int count = 0;
+    int temp_n;
+    printf("Introduceti n: ");
+    if (scanf("%d", &n) != 1){
+        printf("Eroare la citire. Programul se inchide.\n");
+        return 1;
+    }
+    if (n == 0) {
+        count = 1;
+    } else {
+        if (n < 0) {
+            temp_n = -n;
+        } else {
+            temp_n = n;
+        }
+        while (temp_n > 0) {
+            count++;
+            temp_n = temp_n / 10;
+        }
+    }
+    printf("Numarul de cifre: %d\n", count);
+    return 0;
+}
+*/
+//--------------------------------------------------------------------------11
+/*
+#include <stdio.h>
+
+int main() {
+    int n;
+    int temp_n;
+    printf("Introduceti numarul natural n: ");
+    if (scanf("%d", &n) != 1) {
+        printf("Eroare la citire.\n");
+        return 1;
+    }
+    temp_n = n;
+    if (temp_n <= 0) {
+        printf("%d NU este o putere a lui 2.\n", n);
+        return 0;
+    }
+    while (temp_n % 2 == 0) {
+        temp_n = temp_n / 2;
+    }
+    if (temp_n == 1) {
+        printf("%d este o putere a lui 2.\n", n);
+    } else {
+        printf("%d NU este o putere a lui 2.\n", n);
+    }
+    return 0;
+}
+*/
+//--------------------------------------------------------------------------12
+/*
+#include <stdio.h>
+
+int estePutere(int n, int m) {
+    if (m == 1) {
+        return (n == 1);
+    }
+    if (m > n) {
+        return 0;
+    }
+    while (n % m == 0) {
+        n = n / m;
+    }
+    return (n == 1);
+}
+int main() {
+    int m, n;
+    int rezultat;
+    printf("Introduceti m (baza) si n (numarul de verificat, unde m < n):\n");
+    if (scanf("%d %d", &m, &n) != 2 || m < 0 || n < 0 || m >= n) {
+        printf("Eroare: Asigurati-va ca m si n sunt naturale si m < n.\n");
+        return 1;
+    }
+    rezultat = estePutere(n, m);
+    if (rezultat) {
+        printf("Numarul %d ESTE putere a lui %d.\n", n, m);
+    } else {
+        printf("Numarul %d NU este putere a lui %d.\n", n, m);
+    }
+    return 0;
+}
+*/
+//--------------------------------------------------------------------------13
+/*
+#include <stdio.h>
+
+long long calcul_factorial(int k) {
+    long long fact = 1;
+    for (int i = 1; i <= k; i++) {
+        fact = fact * i;
+    }
+    return fact;
+}
+int main() {
+    int n;
+    long long suma = 0;
+    printf("Introduceti numarul n (n >= 1): ");
+    if (scanf("%d", &n) != 1 || n < 1) {
+        printf("Eroare: Introduceti un numar natural n >= 1.\n");
+        return 1;
+    }
+    for (int i = 1; i <= n; i++) {
+        suma = suma + calcul_factorial(i);
+    }
+    printf("Suma 1! + 2! + ... + %d! este: %lld\n", n, suma);
+    return 0;
+}
+*/
+//--------------------------------------------------------------------------14
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n, i;
+    printf("Introduceti numarul n: ");
+    if (scanf("%d", &n) != 1) return 1;
+
+    if (n <= 1) {
+        printf("%d nu este prim.\n", n);
+        return 0;
+    }
+    if (n==2 || n==3) {
+        printf("%d este prim.\n", n);
+        return 0;
+    }
+    if (n%2==0 || n%3==0) {
+        printf("%d nu este prim.\n", n);
+        return 0;
+    }
+    // Verificarea divizorilor de forma 6k +/- 1 (optim)
+    for (i=5; i*i <= n; i=i+6) {
+        if (n%i==0 || n%(i+2) == 0) {
+            printf("%d nu este prim.\n", n);
+            return 0;
+        }
+    }
+    printf("%d este prim.\n", n);
+    return 0;
+}
